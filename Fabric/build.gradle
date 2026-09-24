@@ -27,12 +27,14 @@ loom {
             setConfigName("Fabric Client")
             ideConfigGenerated(true)
             runDir("run")
+            vmArg("-Dtbhbridge.debug=true")
         }
         server {
             server()
             setConfigName("Fabric Server")
             ideConfigGenerated(true)
             runDir("run")
+            vmArg("-Dtbhbridge.debug=true")
         }
     }
 }

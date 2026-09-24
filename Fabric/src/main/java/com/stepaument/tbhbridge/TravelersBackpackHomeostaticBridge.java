@@ -38,8 +38,11 @@ public class TravelersBackpackHomeostaticBridge implements ModInitializer {
             registerHoseEffects();
         });
 
-        // Register test commands
-        registerCommands();
+        // Register debug commands only if enabled (pass -Dtbhbridge.debug=true)
+        if (Boolean.getBoolean("tbhbridge.debug")) {
+            registerCommands();
+            LOGGER.info("Debug commands enabled");
+        }
 
         LOGGER.info("Traveler's Backpack - Homeostatic Bridge initialized!");
     }
