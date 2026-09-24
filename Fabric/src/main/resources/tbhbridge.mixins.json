@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "com.stepaument.tbhbridge.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "HoseItemMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

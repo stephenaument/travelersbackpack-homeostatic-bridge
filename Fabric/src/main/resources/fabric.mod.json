@@ -29,5 +29,8 @@
   },
   "suggests": {
     "trinkets": "*"
-  }
+  },
+  "mixins": [
+    "tbhbridge.mixins.json"
+  ]
 }
