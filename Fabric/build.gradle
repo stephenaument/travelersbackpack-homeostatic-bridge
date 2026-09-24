@@ -1,0 +1,49 @@
+plugins {
+    id 'multiloader-loader'
+    id 'net.fabricmc.fabric-loom'
+}
+
+def modsDir = "/Users/stepaument/Documents/curseforge/minecraft/Instances/Step's Basic Mods/mods"
+
+dependencies {
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+
+    // Traveler's Backpack (local JAR) - compileOnly since we don't bundle it
+    compileOnly files("${modsDir}/travelersbackpack-fabric-26.2-11.3.2.jar")
+
+    // Homeostatic (local JAR) - compileOnly since we don't bundle it
+    compileOnly files("${modsDir}/homeostatic-26.2-fabric-2.13.0.1.jar")
+}
+
+loom {
+    // Access widener disabled for now - not needed
+    // accessWidenerPath = file("src/main/resources/travelersbackpack-homeostatic-bridge.accesswidener")
+
+    runs {
+        client {
+            client()
+            setConfigName("Fabric Client")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+        server {
+            server()
+            setConfigName("Fabric Server")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId project.group
+            artifactId "${mod_id}-${minecraft_version}-fabric"
+            version project.version
+            from components.java
+        }
+    }
+}

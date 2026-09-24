@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "tbhbridge",
+  "version": "${version}",
+  "name": "Traveler's Backpack - Homeostatic Bridge",
+  "description": "Fill your Homeostatic flask from your Traveler's Backpack water tanks! Stay hydrated in the Nether.",
+  "authors": [
+    "stepaument"
+  ],
+  "contact": {
+    "homepage": "https://github.com/stepaument/travelersbackpack-homeostatic-bridge",
+    "sources": "https://github.com/stepaument/travelersbackpack-homeostatic-bridge"
+  },
+  "license": "MIT",
+  "icon": "assets/tbhbridge/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.stepaument.tbhbridge.TravelersBackpackHomeostaticBridge"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.0",
+    "minecraft": "~26.2",
+    "java": ">=25",
+    "fabric-api": "*",
+    "travelersbackpack": "*",
+    "homeostatic": "*"
+  },
+  "suggests": {
+    "trinkets": "*"
+  }
+}

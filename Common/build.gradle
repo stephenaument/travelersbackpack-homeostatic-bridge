@@ -1,0 +1,38 @@
+plugins {
+    id 'multiloader-common'
+    id 'net.neoforged.moddev'
+}
+
+neoForge {
+    neoFormVersion = neo_form_version
+    validateAccessTransformers = true
+}
+
+dependencies {
+    // Common dependencies that work across loaders
+    compileOnly group: 'org.spongepowered', name: 'mixin', version: '0.8.5'
+}
+
+configurations {
+    commonJava {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+    commonResources {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+}
+
+artifacts {
+    commonJava sourceSets.main.java.sourceDirectories.singleFile
+    commonResources sourceSets.main.resources.sourceDirectories.files
+}
+
+// Declare capabilities for multiloader
+['apiElements'].each { variant ->
+    configurations."$variant".outgoing {
+        capability("$group:$mod_id-${minecraft_version}-${project.name}:$version".toLowerCase())
+        capability("$group:$mod_id:$version")
+    }
+}
